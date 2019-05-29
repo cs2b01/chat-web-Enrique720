@@ -41,11 +41,7 @@ $(function(){
             dataField: "User_from_id"
         }, {
             dataField: "User_to_id"
-        }, {
-            dataField: "User_from"
-        }, {
-            dataField: "User_to"
-        },
+        }, 
          ],
     }).dxDataGrid("instance");
 });
