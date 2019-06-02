@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Chat-Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write(decodeURIComponent('%3Cscript src="js/jquery-3.1.0.min.js"%3E%3C/script%3E'))</script>
+</head>
+<body>
+<form method="POST" action="/authenticate">
+    <div>
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="username" id="username"/></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" id="password"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Login" onclick="getData()"/></td>
+            </tr>
+        </table>
+    </div>
+</form>
+<script>
+    function getData(){
+        var nombre = $('#username').val();
+        var pass = $('#password').val();
+        $.ajax({
+            url:'/authenticate',
+            type:'POST',
+            contentType : 'application/json',
+            data = JSON.stringify({
+                  "username":nombre,
+                  "password":pass
+             }),
+             dataType:'json'
+        });
+        var json = "{ \"nombre\" :\" " + nombre +" \" ,\" password\": \"" + pass + "\" }"
+        alert(JSON.stringify({
+                  "username":nombre,
+                  "password":pass
+             }))
+    }
+</script>
+
+</body>
+</html>
